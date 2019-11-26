@@ -7,6 +7,8 @@ describe('ConfigService', function() {
 				artifactoryGroups: ['reader'],
 				artifactoryBaseUrl: 'http://artifactory.example.com',
 				artifactoryToken: '242934203ca32bd',
+				artifactoryNpmRepoName: 'npm-local',
+				artifactoryNpmPackageScope: 'orgscope',
 				organizationLogins: ['MyCompany'],
 				teamIds: [2343222],
 				gitHubKey: 'github user key',

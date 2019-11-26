@@ -1,5 +1,5 @@
 {
-  "name": "strap-core",
+  "name": "@6river/strap-core",
   "version": "1.0.0",
   "description": "Bootstrap a developer machine.",
   "main": "index.js",

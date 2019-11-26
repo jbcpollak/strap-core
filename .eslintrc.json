@@ -1,0 +1,10 @@
+{
+	"extends": "6river/typescript",
+	"rules": {
+		"new-cap": "off",
+		"no-console": "off",
+		"no-invalid-this": "off",
+		"indent": ["error", "tab", {
+		}]
+	}
+}

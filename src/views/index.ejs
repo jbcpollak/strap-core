@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>6 River Systems Bootstrap</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      code {
+        font-family: sfmono-regular, Consolas, liberation mono, Menlo, Courier, monospace;
+				padding: 0.2em 0.4em;
+				margin: 0;
+				font-size: 85%;
+				background-color: rgba(27, 31, 35, 0.1);
+				border-radius: 3px;
+				display: inline;
+      }
+      header,
+      main,
+			.script {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+			@media (min-width: 900px) {
+				header,
+				main {
+					width: 70%;
+				}
+			}
+			@media (min-width: 1400px) {
+				header,
+				main {
+					width: 50%;
+				}
+			}
+      li {
+        margin-bottom: 1rem;
+      }
+			li .symbol {
+				margin-right: 0.3rem;
+			}
+			.script {
+				text-align: center;
+			}
+			.script button {
+				background-color: #8A8D8F;
+				border: 0;
+				padding: 0.5rem;
+				margin: 1rem;
+				color: #ffffff;
+				font-size: 125%;
+			}
+			.script button:hover,
+			.script button:focus {
+				background-color: #373A36;
+				cursor: pointer;
+			}
+			.script button.primary {
+				background-color: #2458A0;
+			}
+			.script button.primary:hover,
+			.script button.primary:focus {
+				background-color: #F87E2D;
+			}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>6 River Systems Bootstrap</h1>
+    </header>
+    <main>
+      <h2>Before You Begin</h2>
+			<p>
+				Browse to <a href="<%= artifactoryBaseUrl %>/webapp/#/login">this URL</a> and log in with your GitHub
+				account. The script will prompt you to get an Artifactory token from here.
+			</p>
+			<h2>Permissions</h2>
+			<p>
+				Follow the instructions below to turn each ❌  into a ✅ . Reload the page to update the list.
+			</p>
+			<%- include('home/profile', {profile: profile}) %>
+			<%- include('home/organizations', {organizations: organizations}) %>
+			<%- include('home/teams', {teams: teams, isInAnyTeams: isInAnyTeams}) %>
+			<%- include('home/artifactory', {groups: artifactoryGroups, isArtifactoryUser: isArtifactoryUser}) %>
+      <h2>Usage</h2>
+      <ol>
+        <li>Using the button below, download the script.</li>
+        <li>Run Strap in your Terminal with <code>bash ~/Downloads/strap.sh</code>.</li>
+        <li>
+          Delete <code>strap.sh</code> (it has a GitHub token in it) with <code>rm -f ~/Downloads/strap.sh</code>.
+        </li>
+			</ol>
+			<section class="script">
+				<a href="/strap.sh/preview"><button>Preview</button></a>
+				<a href="/strap.sh"><button class="primary">Download</button></a>
+			</section>
+    </main>
+  </body>
+</html>

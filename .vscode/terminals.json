@@ -1,0 +1,22 @@
+{
+	"autorun": true,
+	"autokill": true,
+	"terminals": [
+		{
+			"name": "npm start",
+			"command": "npm start",
+			"focus": true
+		},
+		{
+			"name": "npm test",
+			"command": "npm test"
+		},
+		{
+			"name": "npm run proxy",
+			"command": "npm run proxy"
+		},
+		{
+			"name": "bash"
+		}
+	]
+}

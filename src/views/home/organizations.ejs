@@ -1,0 +1,10 @@
+<h3>Organizations</h3>
+<ul>
+    <% for (const org of organizations) { %>
+        <% if (org.isMember) { %>
+            <li><span class="symbol">✅</span> you are in the organization <a href="<%= org.link %>"><%= org.name %></a></li>
+        <% } else { %>
+            <li><span class="symbol">❌</span> you are not in the organization <a href="<%= org.link %>"><%= org.name %></a></li>
+        <% } %>
+    <% } %>
+</ul>

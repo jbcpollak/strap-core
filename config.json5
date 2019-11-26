@@ -1,0 +1,23 @@
+{
+	// Logins of organizations that the user should be in before downloading this script
+	// Array<String>
+	organizationLogins: [
+	],
+
+	/**
+	 * IDs of teams that the user may be in before downloading this script
+	 * To get the IDs of all teams in the organization:
+	 * curl -u [GitHub username]:[personal access token] https://api.github.com/orgs/YourOrganization/teams
+	 * Array<Number>
+	 */
+	teamIds: [
+	],
+
+	// Names of groups that the user should be in before downloading this script
+	// Array<String>
+	artifactoryGroups: [
+	],
+
+	// Path to custom script to run after bootstrapping
+	customScript: '',
+}

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+STRAP_GIT_NAME="<%= gitName %>"
+STRAP_GIT_EMAIL="<%= gitEmail %>"
+STRAP_GITHUB_USER="<%= gitHubUser %>"
+STRAP_GITHUB_TOKEN="<%= gitHubToken %>"
+REPO_SETS="<%= repoSets %>"
+ARTIFACTORY_BASE_URL="<%= artifactoryBaseUrl %>"
+ARTIFACTORY_NPM_REPO="<%= artifactoryNpmRepoName %>",
+ARTIFACTORY_NPM_PACKAGE_SCOPE="<%= artifactoryNpmPackageScope %>",
+
+function execCustomScript {
+<%- customScript %>
+}
+
+<%# Must use %- instead of %= to prevent HTML escaping of the variable value #%>
+<%- script %>

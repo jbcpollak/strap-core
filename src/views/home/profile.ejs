@@ -1,0 +1,26 @@
+<h3>Profile</h3>
+<ul>
+    <% if (profile.gitName) { %>
+        <li><span class="symbol">✅</span> your name on GitHub is set to "<%= profile.gitName %>"</li>
+    <% } else { %>
+        <li>
+            <span class="symbol">❌</span> you do not have a name set on GitHub, set it
+            <a href="https://github.com/settings/profile">here</a>
+        </li>
+    <% } %>
+    <% if (profile.gitEmail) { %>
+        <li><span class="symbol">✅</span> your public email on GitHub is set to "<%= profile.gitEmail %>"</li>
+    <% } else { %>
+        <li>
+            <span class="symbol">❌</span> your email is either private or not set on GitHub, use
+            <a href="https://help.github.com/articles/setting-your-commit-email-address-on-github/">this guide</a> to
+            set it (uncheck "Keep my email address private" if it is checked) and then go to
+            <a href="https://github.com/settings/profile">your profile settings</a> and set "Public Email"
+        </li>
+    <% } %>
+    <% if (profile.gitHubUser) { %>
+        <li><span class="symbol">✅</span> your GitHub username is <%= profile.gitHubUser %></li>
+    <% } else { %>
+        <li><span class="symbol">❌</span> could not get your GitHub username</li>
+    <% } %>
+</ul>

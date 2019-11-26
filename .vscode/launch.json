@@ -1,0 +1,25 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		// From https://medium.com/@dupski/debug-typescript-in-vs-code-without-compiling-using-ts-node-9d1f4f9a94a
+		{
+			"name": "App",
+			"type": "node",
+			"request": "launch",
+			"args": [
+				"${workspaceRoot}/src/main.ts"
+			],
+			"runtimeArgs": [
+				"--nolazy",
+				"-r",
+				"ts-node/register"
+			],
+			"sourceMaps": true,
+			"cwd": "${workspaceRoot}",
+			"protocol": "inspector",
+		}
+	]
+}

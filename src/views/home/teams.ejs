@@ -1,0 +1,23 @@
+<h3>Teams</h3>
+<p>You may not need to be on all of the below teams.</p>
+<ul>
+    <% if (teams.length === 0) { %>
+        <li>
+            <span class="symbol">❌</span>
+            Cannot check teams until you become a member of all of the above organizations.
+        </li>
+    <% } else if (isInAnyTeams === false) { %>
+        <li>
+            <span class="symbol">❌</span>
+            You are not a member of any teams.
+        </li>
+    <% } else { %>
+			<% for (const team of teams) { %>
+					<% if (team.isMember) { %>
+							<li><span class="symbol">✅</span> you are on the team <a href="<%= team.link %>"><%= team.name %></a></li>
+					<% } else { %>
+							<li><span class="symbol">❓</span> you are not on the team <a href="<%= team.link %>"><%= team.name %></a></li>
+					<% } %>
+			<% } %>
+		<% } %>
+</ul>

@@ -1,0 +1,19 @@
+<h3>Artifactory</h3>
+<ul>
+    <% if (isArtifactoryUser) { %>
+        <li><span class="symbol">✅</span> you have logged in to Artifactory</i></li>
+    <% } else { %>
+        <li>
+            <span class="symbol">❌</span> you have not yet logged in to Artifactory, go to
+            <a href="<%= artifactoryBaseUrl %>/webapp/#/login">this page</a> and log in with your GitHub
+            account
+        </li>
+    <% } %>
+    <% for (const group of groups) { %>
+        <% if (group.isMember) { %>
+            <li><span class="symbol">✅</span> you are in the group <i><%= group.name %></i></li>
+        <% } else { %>
+            <li><span class="symbol">❌</span> you are not in the group <i><%= group.name %></i></li>
+        <% } %>
+    <% } %>
+</ul>

@@ -1,0 +1,75 @@
+{
+  "name": "strap-core",
+  "version": "1.0.0",
+  "description": "Bootstrap a developer machine.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.app.json",
+    "build:watch": "npm run build -- --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint --ext .ts .",
+    "proxy": "local-ssl-proxy --source 3000 --target 5000",
+    "start": "nodemon | pino-pretty",
+    "prestart:prod": "npm run clean && npm run build && cp -r src/views dist/views",
+    "start:prod": "NODE_ENV=production node dist/main.js",
+    "test": "jest --watch",
+    "test:single": "jest",
+    "coverage": "open coverage/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6RiverSystems/strap-core.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/6RiverSystems/strap-core/issues"
+  },
+  "homepage": "https://github.com/6RiverSystems/strap-core#readme",
+  "engines": {
+    "node": ">=9.5.0",
+    "npm": ">=6.1.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "6.12.2",
+    "@types/chance": "^1.0.1",
+    "@types/express": "^4.16.0",
+    "@types/express-session": "^1.15.10",
+    "@types/jest": "^23.1.4",
+    "@types/node": "^10.5.1",
+    "@types/pino": "^4.16.0",
+    "@types/json5": "0.0.30",
+    "@types/sinon": "7.5.1",
+    "@typescript-eslint/eslint-plugin": "2.8.0",
+    "@typescript-eslint/parser": "2.8.0",
+    "chance": "^1.0.16",
+    "eslint": "^6.6.0",
+    "eslint-config-6river": "^3.0.0",
+    "eslint-plugin-mocha": "^6.2.1",
+    "jest": "^23.2.0",
+    "jest-junit": "^5.1.0",
+    "local-ssl-proxy": "^1.3.0",
+    "node-mocks-http": "^1.7.0",
+    "nodemon": "^1.17.5",
+    "pino-pretty": "3.4.0",
+    "sinon": "7.5.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "3.7.2"
+  },
+  "dependencies": {
+    "@6river/reason-guard": "^3.5.3",
+    "@nestjs/common": "6.10.1",
+    "@nestjs/core": "6.10.1",
+    "@nestjs/platform-express": "6.10.1",
+    "@nestjs/testing": "6.10.1",
+    "@octokit/rest": "^15.9.4",
+    "axios": "^0.19.0",
+    "ejs": "^2.6.1",
+    "express-session": "^1.15.6",
+    "json5": "^2.1.1",
+    "memorystore": "^1.6.0",
+    "pino": "^5.13.6",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.2.1"
+  }
+}

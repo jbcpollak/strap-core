@@ -1,7 +1,8 @@
 strap
 ------
 
-[![codecov](https://codecov.io/gh/6RiverSystems/strap-core/branch/develop/graph/badge.svg?token=YT1MJceWfG)](https://codecov.io/gh/6RiverSystems/strap-core) [![CircleCI](https://circleci.com/gh/6RiverSystems/strap-core.svg?style=svg&circle-token=f2b27454c7157c723a8019585b9832dd64e7f0d4)](https://circleci.com/gh/6RiverSystems/strap-core)
+[![codecov](https://codecov.io/gh/6RiverSystems/strap-core/branch/develop/graph/badge.svg?token=YT1MJceWfG)](https://codecov.io/gh/6RiverSystems/strap-core)
+[![CircleCI](https://circleci.com/gh/6RiverSystems/strap-core.svg?style=svg)](https://circleci.com/gh/6RiverSystems/strap-core)
 
 Bootstrap script for provisioning developer machines.
 

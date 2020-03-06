@@ -53,14 +53,14 @@ describe('StrapShController', () => {
 	});
 
 	describe('getScriptData', () => {
-		it('should return sensible data', () => {
+		it('should return sensible data', async () => {
 			const token = 'testToken';
 
 			const response = {
 
 			} as Response;
 
-			const result = strapShController.getScriptData(
+			const result = await strapShController.getScriptData(
 				token,
 				response,
 			);

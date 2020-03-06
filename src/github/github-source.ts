@@ -22,17 +22,17 @@ export class GitHubSource {
 	}
 
 	async getUser(): Promise<User> {
-		const {data}: {data: User} = await this.octoKit.users.get({});
+		const {data}: {data: User} = await this.octoKit.users.getAuthenticated({});
 		return data;
 	}
 
 	async getUserOrganizations(): Promise<UserOrganization[]> {
-		const {data} = await this.octoKit.users.getOrgs({});
+		const {data} = await this.octoKit.orgs.listForAuthenticatedUser({});
 		return data;
 	}
 
-	async getUserTeams(): Promise<Team[]> {
-		const {data} = await this.octoKit.users.getTeams({});
+	async getUserTeams(): Promise<OctoKit.TeamsListForAuthenticatedUserResponse> {
+		const {data} = await this.octoKit.teams.listForAuthenticatedUser({});
 		return data;
 	}
 
@@ -48,21 +48,19 @@ export class GitHubSource {
 		return await getAll<string, Organization>(logins, this.getOrganization.bind(this));
 	}
 
-	async getTeam(id: number): Promise<Team> {
+	async getTeam(id: number): Promise<OctoKit.TeamsGetResponse> {
 		this.logger.info(`getting team with id '${id}'`);
-		const {data}: {data: Team} = await this.octoKit.orgs.getTeam({
-			// `id` is deprecated but is still in the typings; should be removed in the future
-			id: id.toString(),
-			team_id: id.toString(),
+		const {data} = await this.octoKit.teams.get({
+			team_id: id,
 		});
-		data.html_url = `https://github.com/orgs/${data.organization.login}/teams/${data.slug}`;
+		// data.html_url = `https://github.com/orgs/${data.organization.login}/teams/${data.slug}`;
 		this.logger.debug(data, `got team`);
 		return data;
 	}
 
-	async getTeams(ids: number[]): Promise<Team[]> {
+	async getTeams(ids: number[]): Promise<OctoKit.TeamsGetResponse[]> {
 		this.logger.debug(ids, 'getting teams with IDs:');
-		return await getAll<number, Team>(ids, this.getTeam.bind(this));
+		return await getAll<number, OctoKit.TeamsGetResponse>(ids, this.getTeam.bind(this));
 	}
 
 	/**
@@ -71,10 +69,8 @@ export class GitHubSource {
 	 */
 	async getChildTeams(id: number): Promise<Team[]> {
 		this.logger.info(`getting child teams of team with id '${id}'`);
-		const {data}: {data: Team[]} = await this.octoKit.orgs.getChildTeams({
-			// `id` is deprecated but is still in the typings; should be removed in the future
-			id: id.toString(),
-			team_id: id.toString(),
+		const {data}: {data: Team[]} = await this.octoKit.teams.listChild({
+			team_id: id,
 		});
 		this.logger.debug(data, `got child teams of team with id '${id}'`);
 		return data;
@@ -84,7 +80,7 @@ export class GitHubSource {
 	 * Recursively get all of the child teams of a the given teams as a one-dimensional array
 	 * @param teams A list of teams
 	 */
-	async getChildTeamsRecursively(teams: Team[]): Promise<Team[]> {
+	async getChildTeamsRecursively(teams: OctoKit.TeamsGetResponse[]): Promise<Team[]> {
 		// Get child teams of each provided team
 		const childTeams: Team[][] = await Promise.all(teams.map((team) => this.getChildTeams(team.id)));
 
@@ -104,7 +100,7 @@ export class GitHubSource {
 	 * Recursively get all child teams of a given team as a one-dimensional array
 	 * @param id A team ID
 	 */
-	async getAllChildTeams(id: number): Promise<Team[]> {
+	async getAllChildTeams(id: number): Promise<OctoKit.TeamsGetResponse[]> {
 		const team = await this.getTeam(id);
 		return await this.getChildTeamsRecursively([team]);
 	}
